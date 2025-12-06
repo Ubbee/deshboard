@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  background: #0f172a;
+  color: white;
+  font-family: sans-serif;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.menu-lateral {
+  width: 220px;
+  background: #1e293b;
+  padding: 20px;
+}
+
+.barra-superior {
+  padding: 20px;
+  border-bottom: 1px solid #334155;
+}
+
+.layout__contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout__principal {
+  padding: 20px;
+}
