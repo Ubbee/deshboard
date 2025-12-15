@@ -4,7 +4,10 @@ import BarraSuperior from "./BarraSuperior";
 function LayoutPrincipal({ children, seccionActiva, onCambiarSeccion }) {
   return (
     <div className="layout">
-      <BarraLateral seccionActiva={seccionActiva} onCambiarSeccion={onCambiarSeccion} />
+      <BarraLateral
+        seccionActiva={seccionActiva}
+        onCambiarSeccion={onCambiarSeccion}
+      />
 
       <div className="layout__contenido">
         <BarraSuperior />

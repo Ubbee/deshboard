@@ -30,3 +30,40 @@ body {
 .layout__principal {
   padding: 20px;
 }
+
+.menu-lateral {
+  width: 220px;
+  background: #1e293b;
+  padding: 20px;
+}
+
+.menu-lateral__titulo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.menu-lateral__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-menu {
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: left;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.item-menu:hover {
+  background: #334155;
+}
+
+.item-menu--activo {
+  background: #2563eb;
+}
