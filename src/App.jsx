@@ -4,9 +4,13 @@ import Inicio from "./pages/Inicio";
 import Ventas from "./pages/Ventas";
 import Productos from "./pages/Productos";
 import Reportes from "./pages/Reportes";
+import { SECCIONES } from "./constantes/secciones";
+
+
+
 
 function App() {
-  const [seccionActiva, setSeccionActiva] = useState("inicio");
+  const [seccionActiva, setSeccionActiva] = useState(SECCIONES.INICIO);
 
   const renderizarSeccion = () => {
     switch (seccionActiva) {

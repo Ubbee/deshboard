@@ -1,5 +1,6 @@
 import BarraLateral from "./MenuLateral";
 import BarraSuperior from "./BarraSuperior";
+import MenuMobile from "./MenuMobile";
 
 function LayoutPrincipal({ children, seccionActiva, onCambiarSeccion }) {
   return (
@@ -10,9 +11,14 @@ function LayoutPrincipal({ children, seccionActiva, onCambiarSeccion }) {
       />
 
       <div className="layout__contenido">
-        <BarraSuperior />
-        <main className="layout__principal">{children}</main>
+        <BarraSuperior seccionActiva={seccionActiva} />
+        <main className="layout_principal">{children}</main>
       </div>
+
+      <MenuMobile
+        seccionActiva={seccionActiva}
+        onCambiarSeccion={onCambiarSeccion}
+      />
     </div>
   );
 }

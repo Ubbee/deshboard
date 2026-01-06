@@ -34,14 +34,11 @@ function GraficoVentasDiarias() {
   };
 
   return (
-    <div className="tarjeta">
+    <div className="tarjeta" style={{ minHeight: "300px" }}>
       <h3>Ventas por día</h3>
       <Line data={data} options={opciones} />
-
-      <p style={{ marginTop: "12px", color: "#94a3b8" }}>
-        Datos correspondientes a la última semana.
-      </p>
     </div>
+
   );
 }
 

@@ -1,24 +1,24 @@
+@import "./variables";
+
+/* ---------------------------------------------- */
+
 body {
   margin: 0;
-  background: #0f172a;
-  color: white;
+  padding: 0;
   font-family: sans-serif;
+  background: $color-bg;
+  color: $color-text;
 }
+
+h2 {
+  margin: 0;
+}
+
+/* ---------------------------------------------- */
 
 .layout {
   display: flex;
   min-height: 100vh;
-}
-
-.menu-lateral {
-  width: 220px;
-  background: #1e293b;
-  padding: 20px;
-}
-
-.barra-superior {
-  padding: 20px;
-  border-bottom: 1px solid #334155;
 }
 
 .layout__contenido {
@@ -31,75 +31,53 @@ body {
   padding: 20px;
 }
 
+/* ---------------------------------------------- */
+
 .menu-lateral {
   width: 220px;
-  background: #1e293b;
+  background: $color-surface;
   padding: 20px;
-}
 
-.menu-lateral__titulo {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+  &__titulo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
 
-.menu-lateral__nav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .item-menu {
   background: transparent;
   border: none;
-  color: white;
+  color: $color-text;
   text-align: left;
   padding: 10px 14px;
   cursor: pointer;
-  border-radius: 6px;
-  transition: 0.2s;
+  border-radius: $radius-sm;
+  transition: background $transition-base;
+
+  &:hover {
+    background: $color-border;
+  }
+
+  &--activo {
+    background: $color-surface-active;
+  }
 }
 
-.item-menu:hover {
-  background: #334155;
-}
+/* ---------------------------------------------- */
 
-.item-menu--activo {
-  background: #2563eb;
-}
-
-.resumen {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.tarjeta {
-  background: #1e293b;
+.barra-superior {
   padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #334155;
+  border-bottom: 1px solid $color-border;
 }
 
-.tarjeta h3 {
-  font-size: 14px;
-  color: #94a3b8;
-  margin-bottom: 8px;
-}
-
-.tarjeta p {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background: #0f172a;
-  color: #fff;
-}
+/* ---------------------------------------------- */
 
 .pagina {
   padding: 20px;
@@ -107,33 +85,106 @@ body {
 
 .resumen {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
 }
+
+/* ---------------------------------------------- */
 
 .tarjeta {
-  background: #1e293b;
+  background: $color-surface;
   padding: 20px;
-  border-radius: 8px;
-  border: 1px solid #334155;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  }
+
+  h3 {
+    font-size: 14px;
+    color: $color-muted;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.4;
+  }
+
+  canvas {
+    margin-top: 12px;
+    max-width: 100% !important;
+  }
 }
 
-.tarjeta h3 {
-  font-size: 16px;
-  color: #94a3b8;
-  margin-bottom: 10px;
+.menu-mobile {
+  display: none;
 }
 
-.tarjeta p {
-  font-size: 22px;
-  font-weight: bold;
+/* ---------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .layout {
+    flex-direction: row;
+  }
 }
 
-.tarjeta canvas {
-  margin-top: 12px;
+@media (max-width: 768px) {
+  .menu-lateral {
+    display: none;
+  }
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .layout__principal {
+    padding-bottom: 70px;
+  }
+
+  .pagina {
+    padding: 16px;
+  }
+
+  .menu-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: $color-mobile-bg;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid $color-border;
+    z-index: 10;
+    padding: 0 30px;
+
+    button {
+      background: none;
+      border: none;
+      color: $color-muted;
+      font-size: 14px;
+
+      &.activo {
+        color: $color-primary;
+        font-weight: 600;
+      }
+    }
+  }
 }
 
-.tarjeta p {
-  line-height: 1.4;
-}
+@media (max-width: 480px) {
+  .resumen {
+    grid-template-columns: 1fr;
+  }
 
+  h2 {
+    font-size: 20px;
+  }
+}

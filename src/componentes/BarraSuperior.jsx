@@ -1,7 +1,7 @@
-function BarraSuperior() {
+function BarraSuperior({ seccionActiva }) {
   return (
     <header className="barra-superior">
-      <h1 className="barra-superior__titulo">Panel</h1>
+      <h1>{seccionActiva.toUpperCase()}</h1>
     </header>
   );
 }
