@@ -1,6 +1,8 @@
 @import "./variables";
 
-/* ---------------------------------------------- */
+/* ==============================================
+   BASE MOBILE (mobile first)
+============================================== */
 
 body {
   margin: 0;
@@ -12,12 +14,14 @@ body {
 
 h2 {
   margin: 0;
+  font-size: 20px;
 }
 
-/* ---------------------------------------------- */
+/* Layout base mobile */
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
@@ -28,12 +32,16 @@ h2 {
 }
 
 .layout__principal {
-  padding: 20px;
+  padding: 16px;
+  padding-bottom: 90px; // espacio para menú mobile
+  flex: 1;
+  overflow-y: auto;
 }
 
-/* ---------------------------------------------- */
+/* Menú lateral oculto en mobile */
 
 .menu-lateral {
+  display: none;
   width: 220px;
   background: $color-surface;
   padding: 20px;
@@ -70,27 +78,39 @@ h2 {
   }
 }
 
-/* ---------------------------------------------- */
+/* Barra superior */
 
 .barra-superior {
   padding: 20px;
   border-bottom: 1px solid $color-border;
 }
 
-/* ---------------------------------------------- */
+/* Páginas */
 
 .pagina {
-  padding: 20px;
+  padding: 16px;
+  padding-bottom: 90px;
+  h2{
+    margin-bottom: 10px;
+  }
+
+  .pagina-descripcion {
+    font-size: 14px;
+    color: $color-muted;
+    margin-top: 6px;
+  }
 }
+
+/* Resumen */
 
 .resumen {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
   margin-top: 20px;
 }
 
-/* ---------------------------------------------- */
+/* Tarjetas */
 
 .tarjeta {
   background: $color-surface;
@@ -122,69 +142,144 @@ h2 {
   }
 }
 
+/* Menú mobile */
+
 .menu-mobile {
-  display: none;
-}
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: $color-mobile-bg;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid $color-border;
+  z-index: 10;
+  padding: 0 30px;
 
-/* ---------------------------------------------- */
+  button {
+    background: none;
+    border: none;
+    color: $color-muted;
+    font-size: 14px;
 
-@media (max-width: 1024px) {
-  .layout {
-    flex-direction: row;
-  }
-}
-
-@media (max-width: 768px) {
-  .menu-lateral {
-    display: none;
-  }
-
-  .layout {
-    flex-direction: column;
-  }
-
-  .layout__principal {
-    padding-bottom: 70px;
-  }
-
-  .pagina {
-    padding: 16px;
-  }
-
-  .menu-mobile {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 56px;
-    background: $color-mobile-bg;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-top: 1px solid $color-border;
-    z-index: 10;
-    padding: 0 30px;
-
-    button {
-      background: none;
-      border: none;
-      color: $color-muted;
-      font-size: 14px;
-
-      &.activo {
-        color: $color-primary;
-        font-weight: 600;
-      }
+    &.activo {
+      color: $color-primary;
+      font-weight: 600;
     }
   }
 }
 
-@media (max-width: 480px) {
+/* Tabla */
+
+.tabla-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+}
+
+.tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 13px;
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    cursor: pointer;
+    color: $color-muted;
+    border-bottom: 1px solid $color-border;
+  }
+
+  td {
+    border-bottom: 1px solid $color-border;
+  }
+
+  tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+/* Inputs */
+
+.input-busqueda {
+  margin: 12px 0;
+  padding: 8px 10px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid $color-border;
+  background: transparent;
+  color: $color-text;
+
+  &::placeholder {
+    color: $color-muted;
+  }
+}
+
+.resumen-productos {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: $color-muted;
+}
+
+.producto-destacado {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* ==============================================
+   TABLET
+============================================== */
+
+@media (min-width: 768px) {
   .resumen {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 
   h2 {
-    font-size: 20px;
+    font-size: initial;
+  }
+}
+
+/* ==============================================
+   DESKTOP
+============================================== */
+
+@media (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+  }
+
+  .menu-lateral {
+    display: block;
+  }
+
+  .menu-mobile {
+    display: none;
+  }
+
+  .layout__principal {
+    padding: 20px;
+  }
+
+  .pagina {
+    padding: 20px;
+  }
+
+  .tabla-productos {
+    font-size: 14px;
+
+    th,
+    td {
+      padding: 10px;
+    }
   }
 }

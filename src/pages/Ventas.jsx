@@ -13,7 +13,9 @@ function Ventas() {
 
   return (
     <section className="pagina">
-      <h2>Ventas</h2>
+      <p className="pagina-descripcion">
+        Análisis de ingresos y evolución diaria.
+      </p>
       <GraficoVentasDiarias />
     </section>
   );
